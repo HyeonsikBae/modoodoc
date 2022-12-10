@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: "https://recruit.modoodoc.com/",
   headers: {
-    ContentType: "application/x-www-form-urlencoded",
-    Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+    "Content-Type": "application/x-www-form-urlencoded",
+    Authorization: `Bearer DSF23uirewfgsd768eASYDT2`,
   },
 });
 
