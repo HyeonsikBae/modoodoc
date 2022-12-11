@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosGetHospitalList } from "../../network/axios.custom";
 import { HospitalType } from "../../types/dto";
+import Content from "../commons/Content";
 import Header from "../commons/Header";
 
 const HospitalList = (): JSX.Element => {
@@ -35,7 +36,7 @@ const HospitalList = (): JSX.Element => {
   return (
     <>
       <Header text="모두닥" />
-      {renderHospitalList()}
+      <Content>{renderHospitalList()}</Content>
     </>
   );
 };
