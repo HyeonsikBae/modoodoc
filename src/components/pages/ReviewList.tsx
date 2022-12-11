@@ -6,6 +6,7 @@ import { axiosGetReviewList } from "../../network/axios.custom";
 import { HospitalType, ReviewType } from "../../types/dto";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
+import HorizontalBar from "../commons/HorizontalBar";
 import Review from "../reviews/Review";
 
 const BackButton = styled.button`
@@ -54,8 +55,12 @@ const ReviewList = (): JSX.Element => {
   const renderReviews = (): JSX.Element[] => {
     return reviews.map((review, index) => {
       return (
-        <div key={review.id} ref={reviews.length - 1 === index ? ref : null}>
-          <Review review={review} />
+        <div
+          style={{ paddingTop: "1rem" }}
+          key={review.id}
+          ref={reviews.length - 1 === index ? ref : null}
+        >
+          <Review review={review} hospital={state.hospital} />
         </div>
       );
     });
@@ -64,6 +69,8 @@ const ReviewList = (): JSX.Element => {
   const clickHandler = (): void => {
     navigate("/");
   };
+
+  console.log(state.hospital.name);
 
   return (
     <>

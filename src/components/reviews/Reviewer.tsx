@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import { CustomerType } from "../../types/dto";
+import VerticalBar from "../commons/VerticalBar";
 
 type FlexProps = {
   flexDirection: string;
@@ -51,8 +52,10 @@ const Reviewer = (props: ReviewerProps): JSX.Element => {
         <Flex flexDirection="column">
           <span>{customer.nickname}</span>
           <Flex flexDirection="row">
+            <img src="/assets/pen-solid.svg" alt="edit" />
             <span>{customer.review_cnt}</span>
             <span>{customer.liked_cnt}</span>
+            <VerticalBar />
             <span>{`${registered_at.slice(0, 4)}.
             ${registered_at.slice(5, 7)}.
             ${registered_at.slice(8, 10)} 등록`}</span>

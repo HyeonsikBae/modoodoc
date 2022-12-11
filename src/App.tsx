@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HospitalList from "./components/pages/HospitalList";
+import ReviewDetail from "./components/pages/ReviewDetail";
 import ReviewList from "./components/pages/ReviewList";
 import GlobalStyle from "./styles/GlobalStyle";
 
@@ -12,6 +13,7 @@ const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<HospitalList />} />
           <Route path="/review" element={<ReviewList />} />
+          <Route path="/detail" element={<ReviewDetail />} />
           <Route path="*" element={<HospitalList />} />
         </Routes>
       </BrowserRouter>

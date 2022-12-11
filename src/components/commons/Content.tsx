@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import theme from "../../styles/theme";
 
 const ContentStyle = styled.div`
-  padding: 1rem;
+  background-color: ${theme.colors.lightGray};
 `;
 
 interface ContentProps {
