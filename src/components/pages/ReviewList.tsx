@@ -6,7 +6,6 @@ import { axiosGetReviewList } from "../../network/axios.custom";
 import { HospitalType, ReviewType } from "../../types/dto";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
-import HorizontalBar from "../commons/HorizontalBar";
 import Review from "../reviews/Review";
 
 const BackButton = styled.button`
@@ -28,16 +27,21 @@ const ReviewList = (): JSX.Element => {
   const [reviews, setReviews] = useState<ReviewType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [ref, inView] = useInView();
+  const [isEnd, setIsEnd] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const fetchReviewList = useCallback(
     (search: string): void => {
-      console.log("callbac");
-      axiosGetReviewList(state.hospital.id, search, page, 5)
-        .then((response) => {
-          setReviews(reviews.concat(response.data.reviews));
-        })
-        .catch((error) => console.error(error));
+      if (!isEnd) {
+        axiosGetReviewList(state.hospital.id, search, page, 5)
+          .then((response) => {
+            setReviews(reviews.concat(response.data.reviews));
+            if (response.data.reviews.length < 5) {
+              setIsEnd(true);
+            }
+          })
+          .catch((error) => console.error(error));
+      }
     },
     [page]
   );
@@ -47,7 +51,7 @@ const ReviewList = (): JSX.Element => {
   }, [fetchReviewList]);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !isEnd) {
       setPage((page) => page + 1);
     }
   }, [inView]);
@@ -69,8 +73,6 @@ const ReviewList = (): JSX.Element => {
   const clickHandler = (): void => {
     navigate("/");
   };
-
-  console.log(state.hospital.name);
 
   return (
     <>
