@@ -1,8 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import { ReviewType } from "../../types/dto";
-import visit from "../../utils/visit";
+import VerticalBar from "../commons/VerticalBar";
 import Receipt from "./Receipt";
 import SuggestText from "./SuggestText";
 
@@ -10,7 +11,8 @@ const ButtonWrapper = styled.button`
   position: relative;
   width: 100%;
   background-color: ${theme.colors.white};
-  padding: 1rem 0;
+  padding: 0;
+  margin-bottom: 1rem;
   display: flex;
   text-align: left;
 `;
@@ -19,8 +21,14 @@ const ReviewButtonWrapper = styled.div`
   position: relative;
 `;
 
-const Span = styled.span`
-  font-weight: bold;
+type SpanProps = {
+  fontWeight?: string;
+  fontColor?: string;
+};
+
+const Span = styled.span<SpanProps>`
+  font-weight: ${(props): string => (props.fontWeight ? props.fontWeight : "")};
+  color: ${(props): string => (props.fontColor ? props.fontColor : "black")};
 `;
 
 interface ReviewButtonProps {
@@ -29,20 +37,37 @@ interface ReviewButtonProps {
 
 const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
   const { review } = props;
+  const navigate = useNavigate();
+
+  const move = (): void => {
+    navigate("/detail");
+  };
 
   return (
-    <ButtonWrapper>
+    <ButtonWrapper onClick={move}>
       <ReviewButtonWrapper>
         <Receipt />
         <p>
-          <Span>받은 진료 : {review.treatment_prices[0].name}</Span>
+          <Span fontWeight="bold">
+            받은 진료 : {review.treatment_prices[0].name}
+          </Span>
         </p>
         <p>
-          <Span>{review.total_score}</Span>
+          <Span fontWeight="bold">{review.total_score}</Span>
+          <VerticalBar />
           <SuggestText suggest={review.suggest} />
-          {review.visited_at ? `${review.visited_at}년 전 방문` : ""}
+          {review.visited_at ? (
+            <>
+              <VerticalBar />
+              <Span fontColor={`${theme.colors.gray}`}>
+                {`${review.visited_at}년 전 방문`}
+              </Span>
+            </>
+          ) : (
+            ""
+          )}
         </p>
-        {`의사 : ${review.doctor_name}`}
+        {`의사: ${review.doctor_name}`}
       </ReviewButtonWrapper>
     </ButtonWrapper>
   );
