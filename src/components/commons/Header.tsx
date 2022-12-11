@@ -4,7 +4,10 @@ import Center from "../utils/Center";
 import theme from "../../styles/theme";
 
 const HeaderStyle = styled.header`
+  display: flex;
+  align-items: center;
   height: 4rem;
+  z-index: 1;
   color: ${theme.colors.white};
   font-weight: bold;
   position: sticky;
@@ -14,12 +17,14 @@ const HeaderStyle = styled.header`
 
 interface HeaderProps {
   text: string;
+  children?: JSX.Element;
 }
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const { text } = props;
+  const { text, children } = props;
   return (
     <HeaderStyle>
+      {children}
       <Center>{text}</Center>
     </HeaderStyle>
   );
