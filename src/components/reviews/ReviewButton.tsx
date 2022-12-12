@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-import { ReviewType } from "../../types/dto";
+import { HospitalType, ReviewType } from "../../types/dto";
 import VerticalBar from "../commons/VerticalBar";
 import Receipt from "./Receipt";
 import SuggestText from "./SuggestText";
@@ -33,18 +33,33 @@ const Span = styled.span<SpanProps>`
 
 interface ReviewButtonProps {
   review: ReviewType;
+  hospital: HospitalType;
 }
 
 const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
-  const { review } = props;
+  const { review, hospital } = props;
   const navigate = useNavigate();
 
-  const move = (): void => {
-    navigate("/detail");
+  const clickHandler = (
+    hospitalId: number,
+    reviewId: number,
+    hospital: HospitalType
+  ): void => {
+    navigate("/detail", {
+      state: {
+        hospitalId,
+        reviewId,
+        hospital,
+      },
+    });
   };
 
   return (
-    <ButtonWrapper onClick={move}>
+    <ButtonWrapper
+      onClick={(): void =>
+        clickHandler(review.hospital_id, review.id, hospital)
+      }
+    >
       <ReviewButtonWrapper>
         <Receipt />
         <p>

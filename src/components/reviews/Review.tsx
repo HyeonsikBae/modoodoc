@@ -21,29 +21,10 @@ interface ReviewProps {
 
 const Review = (props: ReviewProps): JSX.Element => {
   const { review, hospital } = props;
-  const navigate = useNavigate();
-
-  const clickHandler = (
-    hospitalId: number,
-    reviewId: number,
-    hospital: HospitalType
-  ): void => {
-    navigate("/detail", {
-      state: {
-        hospitalId,
-        reviewId,
-        hospital,
-      },
-    });
-  };
 
   return (
-    <ReviewWrapper
-      onClick={(): void =>
-        clickHandler(review.hospital_id, review.id, hospital)
-      }
-    >
-      <ReviewButton review={review} />
+    <ReviewWrapper>
+      <ReviewButton review={review} hospital={hospital} />
       <ReviewText text={review.contents} />
       <ReviewTreat
         treat_name={review.treatment_prices[0].name}

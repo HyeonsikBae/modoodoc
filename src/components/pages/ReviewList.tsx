@@ -10,9 +10,12 @@ import Review from "../reviews/Review";
 
 const BackButton = styled.button`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
   width: 3rem;
   height: 3rem;
-  background-color: white;
   margin: 0.5rem;
 `;
 
@@ -77,7 +80,9 @@ const ReviewList = (): JSX.Element => {
   return (
     <>
       <Header text={state.hospital.name}>
-        <BackButton onClick={clickHandler} />
+        <BackButton onClick={clickHandler}>
+          <img src="/images/left-arrow.png" alt="back" />
+        </BackButton>
       </Header>
 
       <Content>

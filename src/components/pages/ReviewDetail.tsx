@@ -6,9 +6,12 @@ import Header from "../commons/Header";
 
 const BackButton = styled.button`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
   width: 3rem;
   height: 3rem;
-  background-color: white;
   margin: 0.5rem;
 `;
 
@@ -32,12 +35,12 @@ const ReviewDetail = (): JSX.Element => {
     });
   };
 
-  console.log(state.hospital);
-
   return (
     <>
-      <Header text="!">
-        <BackButton onClick={() => move(state.hospital)} />
+      <Header text={state.hospital.name}>
+        <BackButton onClick={() => move(state.hospital)}>
+          <img src="/images/left-arrow.png" alt="back" />
+        </BackButton>
       </Header>
       <div>REVIEW DETAIL</div>
     </>
