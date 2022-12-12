@@ -30,9 +30,14 @@ const ImageWrapper = styled.div`
   margin: 0.5rem;
 `;
 
-const Image = styled.img`
+const ProfileImage = styled.img`
   width: 70%;
   height: 70%;
+`;
+
+const IconImage = styled.img`
+  width: 0.8rem;
+  height: 0.8rem;
 `;
 
 interface ReviewerProps {
@@ -47,14 +52,16 @@ const Reviewer = (props: ReviewerProps): JSX.Element => {
     <div>
       <Flex flexDirection="row" alignItems="center">
         <ImageWrapper>
-          <Image src={customer.profile_image} alt={customer.nickname} />
+          <ProfileImage src={customer.profile_image} alt={customer.nickname} />
         </ImageWrapper>
         <Flex flexDirection="column">
           <span>{customer.nickname}</span>
-          <Flex flexDirection="row">
-            <img src="/assets/pen-solid.svg" alt="edit" />
-            <span>{customer.review_cnt}</span>
-            <span>{customer.liked_cnt}</span>
+          <Flex flexDirection="row" alignItems="center">
+            <IconImage src="images/pen.png" alt="pen" />
+            <span>&nbsp;{customer.review_cnt}</span>
+            &nbsp;
+            <IconImage src="images/heart.png" alt="pen" />
+            <span>&nbsp;{customer.liked_cnt}</span>
             <VerticalBar />
             <span>{`${registered_at.slice(0, 4)}.
             ${registered_at.slice(5, 7)}.
