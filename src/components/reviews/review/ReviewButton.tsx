@@ -2,9 +2,9 @@ import { Rating } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import theme from "../../styles/theme";
-import { HospitalType, ReviewType } from "../../types/dto";
-import VerticalBar from "../commons/VerticalBar";
+import theme from "../../../styles/theme";
+import { HospitalType, ReviewType } from "../../../types/dto";
+import VerticalBar from "../../commons/VerticalBar";
 import Receipt from "./Receipt";
 import SuggestText from "./SuggestText";
 
