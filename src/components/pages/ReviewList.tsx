@@ -7,6 +7,7 @@ import { HospitalType, ReviewType } from "../../types/dto";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
 import Review from "../reviews/review/Review";
+import ReviewSummary from "../reviews/summary/ReviewSummary";
 
 const BackButton = styled.button`
   position: absolute;
@@ -87,7 +88,9 @@ const ReviewList = (): JSX.Element => {
 
       <Content>
         <section>filter</section>
-        <section>review info</section>
+        <section>
+          <ReviewSummary hospital={state.hospital} />
+        </section>
         <section>clean system</section>
         <section>{renderReviews()}</section>
       </Content>
