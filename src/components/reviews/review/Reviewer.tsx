@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../../styles/theme";
-import { CustomerType } from "../../types/dto";
-import VerticalBar from "../commons/VerticalBar";
+import theme from "../../../styles/theme";
+import { CustomerType } from "../../../types/dto";
+import VerticalBar from "../../commons/VerticalBar";
 
 type FlexProps = {
   flexDirection: string;

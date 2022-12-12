@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { callbackify } from "util";
-import GrayBox from "../utils/GrayBox";
-import theme from "../../styles/theme";
+import GrayBox from "../../utils/GrayBox";
+import theme from "../../../styles/theme";
 
 const Box = styled.div`
   display: flex;
