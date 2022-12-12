@@ -1,3 +1,4 @@
+import { Rating } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -67,7 +68,13 @@ const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
             받은 진료 : {review.treatment_prices[0].name}
           </Span>
         </p>
-        <p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Rating
+            name="rating"
+            defaultValue={review.total_score / 2}
+            precision={0.5}
+            size="small"
+          />
           <Span fontWeight="bold">{review.total_score}</Span>
           <VerticalBar />
           <SuggestText suggest={review.suggest} />
@@ -81,8 +88,10 @@ const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
           ) : (
             ""
           )}
-        </p>
-        {`의사: ${review.doctor_name}`}
+        </div>
+        <span style={{ color: `${theme.colors.gray}` }}>
+          {`의사: ${review.doctor_name}`}
+        </span>
       </ReviewButtonWrapper>
     </ButtonWrapper>
   );
