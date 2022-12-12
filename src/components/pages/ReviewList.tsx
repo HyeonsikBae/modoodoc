@@ -6,7 +6,7 @@ import { axiosGetReviewList } from "../../network/axios.custom";
 import { HospitalType, ReviewType } from "../../types/dto";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
-import Review from "../reviews/Review";
+import Review from "../reviews/review/Review";
 
 const BackButton = styled.button`
   position: absolute;

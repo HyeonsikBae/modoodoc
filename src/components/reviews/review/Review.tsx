@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import theme from "../../styles/theme";
-import { HospitalType, ReviewType } from "../../types/dto";
-import HorizontalBar from "../commons/HorizontalBar";
+import theme from "../../../styles/theme";
+import { HospitalType, ReviewType } from "../../../types/dto";
+import HorizontalBar from "../../commons/HorizontalBar";
 import ReviewButton from "./ReviewButton";
 import Reviewer from "./Reviewer";
 import ReviewText from "./ReviewText";
