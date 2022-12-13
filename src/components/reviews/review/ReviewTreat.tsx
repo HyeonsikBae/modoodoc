@@ -3,15 +3,12 @@ import styled from "styled-components";
 import { callbackify } from "util";
 import GrayBox from "../../utils/GrayBox";
 import theme from "../../../styles/theme";
+import Span from "../../utils/Span";
 
 const Box = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-`;
-
-const Span = styled.span`
-  padding: 0.5rem;
 `;
 
 interface ReviewTreatProps {
@@ -26,8 +23,8 @@ const ReviewTreat = (props: ReviewTreatProps): JSX.Element => {
   return (
     <GrayBox backgroundColor={theme.colors.lightGray}>
       <Box>
-        <Span>{treat_name}</Span>
-        <Span>{`${price} 원`}</Span>
+        <Span padding="0.5rem">{treat_name}</Span>
+        <Span padding="0.5rem">{`${price} 원`}</Span>
       </Box>
     </GrayBox>
   );

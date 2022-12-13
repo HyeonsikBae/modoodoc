@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setFilter } from "../../store/slices/filterSlice";
+import Span from "../utils/Span";
 
 type FilterButtonProps = {
   isClicked: boolean;
@@ -47,7 +48,7 @@ const Filter = (props: FilterProps): JSX.Element => {
       return (
         <Label key={filter} htmlFor={filter}>
           <FilterButton type="radio" name="filter" id={filter} value={filter} />
-          <span>{filter}</span>
+          <Span>{filter}</Span>
         </Label>
       );
     });
