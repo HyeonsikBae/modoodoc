@@ -4,32 +4,13 @@ import styled from "styled-components";
 import theme from "../../../styles/theme";
 import { HospitalType } from "../../../types/dto";
 import VerticalBar from "../../commons/VerticalBar";
+import Flex from "../../utils/Flex";
+import Span from "../../utils/Span";
 
 const SummaryWrapper = styled.div`
   background-color: ${theme.colors.white};
+
   padding: 1rem;
-`;
-
-const Span = styled.span`
-  font-size: 0.8rem;
-  width: 30%;
-  margin: 0 0.1rem;
-`;
-interface FlexProps {
-  direction?: string;
-  justifyContent?: string;
-  alignItems?: string;
-}
-
-const Flex = styled.div<FlexProps>`
-  display: flex;
-  flex-direction: ${(props): string =>
-    props.direction ? `${props.direction}` : ""};
-  border: 1px solid black;
-  justify-content: ${(props): string =>
-    props.justifyContent ? `${props.justifyContent}` : ""};
-  align-items: ${(props): string =>
-    props.alignItems ? `${props.alignItems}` : ""};
 `;
 
 interface ReviewSummaryProps {
@@ -60,7 +41,9 @@ const ReviewSummary = (props: ReviewSummaryProps): JSX.Element => {
       .map((key) => {
         return (
           <Flex key={key} justifyContent="center">
-            <Span>{renderList[key]}</Span>
+            <div style={{ width: "30%" }}>
+              <Span fontSize="0.8rem">{renderList[key]}</Span>
+            </div>
             <VerticalBar />
             <Rating
               defaultValue={hospital[key] / 2}
@@ -75,29 +58,33 @@ const ReviewSummary = (props: ReviewSummaryProps): JSX.Element => {
   return (
     <SummaryWrapper>
       <p style={{ fontWeight: "bold" }}>리뷰 정보</p>
-      <Flex direction="row">
-        <Flex direction="column" style={{ width: "60%" }}>
-          {renderRatings()}
-        </Flex>
-        <Flex
-          direction="column"
-          alignItems="center"
-          style={{ width: "40%", height: "60%" }}
-        >
-          <Flex
-            direction="column"
-            alignItems="center"
-            style={{ width: "100%", height: "60%" }}
-          >
-            <p>별점 평균</p>
-            {hospital.total_score.toFixed(1)} / 10
+      <div
+        style={{
+          padding: "0.5rem",
+          border: `1px solid ${theme.colors.lightGray}`,
+        }}
+      >
+        <Flex direction="row" justifyContent="space-between">
+          <Flex direction="column" width="60%">
+            {renderRatings()}
           </Flex>
-          <Flex direction="row">
-            <Flex>GOOD</Flex>
-            <Flex>BAD</Flex>
+          <Flex direction="column" alignItems="center" width="40%">
+            <Flex
+              direction="column"
+              alignItems="center"
+              width="100%"
+              height="60%"
+            >
+              <p>별점 평균</p>
+              {hospital.total_score.toFixed(1)} / 10
+            </Flex>
+            <Flex direction="row" width="100%" height="40%">
+              <Flex width="100%">GOOD</Flex>
+              <Flex width="100%">BAD</Flex>
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
+      </div>
     </SummaryWrapper>
   );
 };

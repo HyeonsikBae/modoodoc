@@ -5,6 +5,7 @@ import styled from "styled-components";
 import theme from "../../../styles/theme";
 import { HospitalType, ReviewType } from "../../../types/dto";
 import VerticalBar from "../../commons/VerticalBar";
+import Span from "../../utils/Span";
 import Receipt from "./Receipt";
 import SuggestText from "./SuggestText";
 
@@ -20,16 +21,6 @@ const ButtonWrapper = styled.button`
 
 const ReviewButtonWrapper = styled.div`
   position: relative;
-`;
-
-type SpanProps = {
-  fontWeight?: string;
-  fontColor?: string;
-};
-
-const Span = styled.span<SpanProps>`
-  font-weight: ${(props): string => (props.fontWeight ? props.fontWeight : "")};
-  color: ${(props): string => (props.fontColor ? props.fontColor : "black")};
 `;
 
 interface ReviewButtonProps {
@@ -81,7 +72,7 @@ const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
           {review.visited_at ? (
             <>
               <VerticalBar />
-              <Span fontColor={`${theme.colors.gray}`}>
+              <Span color={`${theme.colors.gray}`}>
                 {`${review.visited_at}년 전 방문`}
               </Span>
             </>
@@ -89,9 +80,7 @@ const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
             ""
           )}
         </div>
-        <span style={{ color: `${theme.colors.gray}` }}>
-          {`의사: ${review.doctor_name}`}
-        </span>
+        <Span color={theme.colors.gray}>{`의사: ${review.doctor_name}`}</Span>
       </ReviewButtonWrapper>
     </ButtonWrapper>
   );

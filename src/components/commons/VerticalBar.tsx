@@ -1,14 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 import theme from "../../styles/theme";
-
-const Span = styled.span`
-  color: ${theme.colors.gray};
-  padding: 0 0.2rem;
-`;
+import Span from "../utils/Span";
 
 const VerticalBar = (): JSX.Element => {
-  return <Span>|</Span>;
+  return (
+    <Span padding="0 0.2rem" color={theme.colors.gray}>
+      |
+    </Span>
+  );
 };
 
 export default VerticalBar;
