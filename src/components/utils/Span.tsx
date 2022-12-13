@@ -10,7 +10,7 @@ interface SpanStyleProps {
   margin?: string;
 }
 
-const SpanStyle = styled.div<SpanStyleProps>`
+const SpanStyle = styled.span<SpanStyleProps>`
   font-size: ${(props): string =>
     props.fontSize ? `${props.fontSize}` : "1rem"};
   color: ${(props): string =>
