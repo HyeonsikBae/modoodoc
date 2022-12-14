@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { setFilter } from "../../store/slices/filterSlice";
 import { HospitalType } from "../../types/dto";
 import CleanSystem from "../cleans/CleanSystem";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
+import Filter from "../filters/Filter";
 import ReviewList from "../reviews/review/ReviewList";
 import ReviewSummary from "../reviews/summary/ReviewSummary";
 import Flex from "../utils/Flex";
@@ -29,9 +32,11 @@ interface ILocation {
 const ReviewPage = (): JSX.Element => {
   const { state } = useLocation() as ILocation;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const clickHandler = (): void => {
     navigate("/");
+    dispatch(setFilter(""));
   };
 
   return (
@@ -42,7 +47,7 @@ const ReviewPage = (): JSX.Element => {
         </BackButton>
       </Header>
       <Content>
-        <section>filter</section>
+        <Filter hospital={state.hospital.id} />
         <ReviewSummary hospital={state.hospital} />
         <CleanSystem />
         <section>

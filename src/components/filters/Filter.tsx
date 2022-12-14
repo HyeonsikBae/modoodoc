@@ -1,61 +1,69 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setFilter } from "../../store/slices/filterSlice";
+import theme from "../../styles/theme";
 import Span from "../utils/Span";
 
-type FilterButtonProps = {
-  isClicked: boolean;
-};
-
 const FilterButton = styled.input`
-  border-radius: 20%;
-  width: 16px;
-  height: 16px;
-
-  border: 2px solid #999;
-  transition: 0.2s all linear;
-  margin-right: 5px;
-
-  position: relative;
-  top: 4px;
+  display: none;
 `;
 
 const Label = styled.label`
-  display: flex;
-  flex-direction: row;
-  width: 6rem;
-  height: 2rem;
+  margin: 0 0.2rem;
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  border: 1px solid ${theme.colors.lightPurple};
+  border-radius: 5rem;
 `;
 
 interface FilterProps {
-  filters: string[];
+  hospital: number;
 }
 
 const Filter = (props: FilterProps): JSX.Element => {
-  const { filters } = props;
+  const { hospital } = props;
   const storedFilter = useAppSelector((state) => state.filter);
   const dispatch = useAppDispatch();
 
-  const onClickHandler = (filter: string): void => {
-    if (storedFilter !== filter) {
+  const clickHandler = useCallback((filter: string): void => {
+    console.log(storedFilter.filter);
+    if (storedFilter.filter !== filter) {
       dispatch(setFilter(filter));
     }
-  };
+  }, []);
 
-  const renderFilters = (): JSX.Element[] => {
-    return filters.map((filter) => {
-      return (
-        <Label key={filter} htmlFor={filter}>
-          <FilterButton type="radio" name="filter" id={filter} value={filter} />
-          <Span>{filter}</Span>
-        </Label>
-      );
-    });
-  };
+  const renderFilters = useCallback((): JSX.Element[] => {
+    if (storedFilter[`${hospital}`]) {
+      const array = Array.from(storedFilter[`${hospital}`][0]);
+      return array.map((treat: any) => {
+        return (
+          <Label key={treat} htmlFor={treat}>
+            <Span whiteSpace="nowrap" fontSize="0.8rem">
+              {treat}
+            </Span>
+            <FilterButton
+              type="radio"
+              name="filter"
+              id={treat}
+              value={treat}
+              onClick={(): void => clickHandler(treat)}
+            />
+          </Label>
+        );
+      });
+    }
+
+    const rtn = [];
+    rtn.push(<div key={1}>Loading</div>);
+    rtn.push(<div key={2}>...</div>);
+    return rtn;
+  }, [storedFilter]);
 
   return (
-    <div style={{ display: "flex", overflow: "auto" }}>{renderFilters()}</div>
+    <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
+      {renderFilters()}
+    </div>
   );
 };
 
