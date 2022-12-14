@@ -21,10 +21,12 @@ const ReviewTreat = (props: ReviewTreatProps): JSX.Element => {
   const price = parseInt(treat_price, 10).toLocaleString("ko-KR");
 
   return (
-    <GrayBox backgroundColor={theme.colors.lightGray}>
+    <GrayBox margin="1rem 0 0 0" backgroundColor={theme.colors.lightGray}>
       <Box>
-        <Span padding="0.5rem">{treat_name}</Span>
-        <Span padding="0.5rem">{`${price} 원`}</Span>
+        <Span fontSize="0.8rem" padding="0.5rem">
+          {treat_name}
+        </Span>
+        <Span fontSize="0.8rem" padding="0.5rem">{`${price} 원`}</Span>
       </Box>
     </GrayBox>
   );

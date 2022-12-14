@@ -55,7 +55,7 @@ const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
       <ReviewButtonWrapper>
         <Receipt />
         <p>
-          <Span fontWeight="bold">
+          <Span fontSize="0.8rem" fontWeight="bold">
             받은 진료 : {review.treatment_prices[0].name}
           </Span>
         </p>
@@ -66,13 +66,15 @@ const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
             precision={0.5}
             size="small"
           />
-          <Span fontWeight="bold">{review.total_score}</Span>
+          <Span fontSize="0.8rem" fontWeight="bold">
+            {review.total_score}
+          </Span>
           <VerticalBar />
           <SuggestText suggest={review.suggest} />
           {review.visited_at ? (
             <>
               <VerticalBar />
-              <Span color={`${theme.colors.gray}`}>
+              <Span fontSize="0.8rem" color={`${theme.colors.gray}`}>
                 {`${review.visited_at}년 전 방문`}
               </Span>
             </>
@@ -80,7 +82,10 @@ const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
             ""
           )}
         </div>
-        <Span color={theme.colors.gray}>{`의사: ${review.doctor_name}`}</Span>
+        <Span
+          fontSize="0.8rem"
+          color={theme.colors.gray}
+        >{`의사: ${review.doctor_name}`}</Span>
       </ReviewButtonWrapper>
     </ButtonWrapper>
   );

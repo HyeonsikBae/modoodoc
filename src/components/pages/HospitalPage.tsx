@@ -5,7 +5,7 @@ import { HospitalType } from "../../types/dto";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
 
-const HospitalList = (): JSX.Element => {
+const HospitalPage = (): JSX.Element => {
   const [hospitalList, setHospitalList] = useState<HospitalType[]>([]);
   const navigate = useNavigate();
 
@@ -41,4 +41,4 @@ const HospitalList = (): JSX.Element => {
   );
 };
 
-export default HospitalList;
+export default HospitalPage;
