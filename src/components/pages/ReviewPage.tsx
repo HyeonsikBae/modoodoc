@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch } from "../../store/hooks";
@@ -8,7 +9,6 @@ import CleanSystem from "../cleans/CleanSystem";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
 import Filter from "../filters/Filter";
-import TestFilter from "../filters/TestFilter";
 import ReviewList from "../reviews/review/ReviewList";
 import ReviewSummary from "../reviews/summary/ReviewSummary";
 import Flex from "../utils/Flex";
@@ -38,6 +38,7 @@ const ReviewPage = (): JSX.Element => {
   const clickHandler = (): void => {
     dispatch(setFilter(""));
     navigate("/");
+    dispatch(setFilter(""));
   };
 
   return (
@@ -48,9 +49,7 @@ const ReviewPage = (): JSX.Element => {
         </BackButton>
       </Header>
       <Content>
-        <div style={{ display: "flex", height: "2rem" }}>
-          <Filter hospital={state.hospital.id} />
-        </div>
+        <Filter hospital={state.hospital.id} />
         <ReviewSummary hospital={state.hospital} />
         <CleanSystem />
         <section>

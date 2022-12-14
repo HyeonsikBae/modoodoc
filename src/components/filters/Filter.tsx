@@ -5,10 +5,6 @@ import { setFilter } from "../../store/slices/filterSlice";
 import theme from "../../styles/theme";
 import Span from "../utils/Span";
 
-type FilterButtonProps = {
-  isClicked: boolean;
-};
-
 const FilterButton = styled.input`
   display: none;
 `;
@@ -27,18 +23,19 @@ interface FilterProps {
 
 const Filter = (props: FilterProps): JSX.Element => {
   const { hospital } = props;
-  const storedFilter = useAppSelector((state) => state);
+  const storedFilter = useAppSelector((state) => state.filter);
   const dispatch = useAppDispatch();
 
   const clickHandler = useCallback((filter: string): void => {
-    if (storedFilter !== filter) {
+    if (storedFilter.filter !== filter) {
       dispatch(setFilter(filter));
     }
   }, []);
 
   const renderFilters = useCallback((): JSX.Element[] => {
-    if (storedFilter.filter[`${hospital}`]) {
-      const array = Array.from(storedFilter.filter[`${hospital}`][0]);
+    if (storedFilter[`${hospital}`]) {
+      const array = Array.from(storedFilter[`${hospital}`][0]);
+
       return array.map((treat: any) => {
         return (
           <Label key={treat} htmlFor={treat}>
