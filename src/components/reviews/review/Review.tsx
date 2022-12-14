@@ -1,23 +1,22 @@
+/* eslint-disable import/order */
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import theme from "../../../styles/theme";
+import styled from "styled-components";
 import { HospitalType, ReviewType } from "../../../types/dto";
-import HorizontalBar from "../../commons/HorizontalBar";
+import HorizontalBar from "../../utils/HorizontalBar";
 import ReviewButton from "./ReviewButton";
 import Reviewer from "./Reviewer";
 import ReviewText from "./ReviewText";
 import ReviewTreat from "./ReviewTreat";
 
-const ReviewWrapper = styled.div`
-  background-color: ${theme.colors.white};
-  padding: 1rem;
-`;
-
 interface ReviewProps {
   review: ReviewType;
   hospital: HospitalType;
 }
+const ReviewWrapper = styled.div`
+  background-color: ${theme.colors.white};
+  padding: 1rem;
+`;
 
 const Review = (props: ReviewProps): JSX.Element => {
   const { review, hospital } = props;

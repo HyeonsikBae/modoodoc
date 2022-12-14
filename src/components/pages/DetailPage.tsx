@@ -1,8 +1,17 @@
+/* eslint-disable import/order */
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { HospitalType } from "../../types/dto";
 import Header from "../commons/Header";
+
+interface ILocation {
+  state: {
+    hospitalId: number;
+    reviewId: number;
+    hospital: HospitalType;
+  };
+}
 
 const BackButton = styled.button`
   position: absolute;
@@ -15,15 +24,7 @@ const BackButton = styled.button`
   margin: 0.5rem;
 `;
 
-interface ILocation {
-  state: {
-    hospitalId: number;
-    reviewId: number;
-    hospital: HospitalType;
-  };
-}
-
-const ReviewDetail = (): JSX.Element => {
+const DetailPage = (): JSX.Element => {
   const { state } = useLocation() as ILocation;
   const navigate = useNavigate();
 
@@ -47,4 +48,4 @@ const ReviewDetail = (): JSX.Element => {
   );
 };
 
-export default ReviewDetail;
+export default DetailPage;

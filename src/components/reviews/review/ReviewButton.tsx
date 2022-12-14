@@ -1,13 +1,19 @@
-import { Rating } from "@mui/material";
+/* eslint-disable import/order */
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import theme from "../../../styles/theme";
+import styled from "styled-components";
 import { HospitalType, ReviewType } from "../../../types/dto";
-import VerticalBar from "../../commons/VerticalBar";
+import { Rating } from "@mui/material";
+import VerticalBar from "../../utils/VerticalBar";
 import Span from "../../utils/Span";
 import Receipt from "./Receipt";
 import SuggestText from "./SuggestText";
+
+interface ReviewButtonProps {
+  review: ReviewType;
+  hospital: HospitalType;
+}
 
 const ButtonWrapper = styled.button`
   position: relative;
@@ -22,11 +28,6 @@ const ButtonWrapper = styled.button`
 const ReviewButtonWrapper = styled.div`
   position: relative;
 `;
-
-interface ReviewButtonProps {
-  review: ReviewType;
-  hospital: HospitalType;
-}
 
 const ReviewButton = (props: ReviewButtonProps): JSX.Element => {
   const { review, hospital } = props;

@@ -1,5 +1,10 @@
+/* eslint-disable import/order */
 import React from "react";
 import styled from "styled-components";
+
+interface CenterProps {
+  children: JSX.Element | string;
+}
 
 const CenterStyle = styled.div`
   width: 100%;
@@ -8,10 +13,6 @@ const CenterStyle = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-interface CenterProps {
-  children: JSX.Element | string;
-}
 
 const Center = (props: CenterProps): JSX.Element => {
   const { children } = props;

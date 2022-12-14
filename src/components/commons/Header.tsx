@@ -1,7 +1,13 @@
+/* eslint-disable import/order */
 import React from "react";
+import theme from "../../styles/theme";
 import styled from "styled-components";
 import Center from "../utils/Center";
-import theme from "../../styles/theme";
+
+interface HeaderProps {
+  text: string;
+  children?: JSX.Element;
+}
 
 const HeaderStyle = styled.header`
   display: flex;
@@ -14,11 +20,6 @@ const HeaderStyle = styled.header`
   top: 0;
   background-color: ${theme.colors.purple};
 `;
-
-interface HeaderProps {
-  text: string;
-  children?: JSX.Element;
-}
 
 const Header = (props: HeaderProps): JSX.Element => {
   const { text, children } = props;

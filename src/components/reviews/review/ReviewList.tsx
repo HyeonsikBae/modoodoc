@@ -1,9 +1,10 @@
+/* eslint-disable import/order */
 import React, { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { axiosGetReviewList } from "../../../network/axios.custom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { HospitalType, ReviewType } from "../../../types/dto";
 import { addList } from "../../../store/slices/filterSlice";
+import { axiosGetReviewList } from "../../../network/axios.custom";
+import { HospitalType, ReviewType } from "../../../types/dto";
 import Review from "./Review";
 
 interface ReviewListProps {
@@ -19,22 +20,18 @@ const ReviewList = (props: ReviewListProps): JSX.Element => {
   const [reload, setReload] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const filterStore = useAppSelector((store) => store.filter);
-  const fetchReviewList = useCallback(
-    (search: string): void => {
-      console.log(filterStore.filter);
-      if (!isEnd) {
-        axiosGetReviewList(hospital.id, filterStore.filter, page, 5)
-          .then((response) => {
-            setReviews(reviews.concat(response.data.reviews));
-            if (response.data.reviews.length < 5) {
-              setIsEnd(true);
-            }
-          })
-          .catch((error) => console.error(error));
-      }
-    },
-    [page, reload]
-  );
+  const fetchReviewList = useCallback((): void => {
+    if (!isEnd) {
+      axiosGetReviewList(hospital.id, filterStore.filter, page, 5)
+        .then((response) => {
+          setReviews(reviews.concat(response.data.reviews));
+          if (response.data.reviews.length < 5) {
+            setIsEnd(true);
+          }
+        })
+        .catch((error) => console.error(error));
+    }
+  }, [page, reload]);
 
   useEffect(() => {
     setReviews([]);
@@ -55,7 +52,7 @@ const ReviewList = (props: ReviewListProps): JSX.Element => {
   }, [reviews]);
 
   useEffect(() => {
-    fetchReviewList("");
+    fetchReviewList();
   }, [fetchReviewList]);
 
   useEffect(() => {

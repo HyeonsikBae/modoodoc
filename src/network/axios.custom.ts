@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import instance from "./axios.instance";
 
 const getHospitalListURL = `/hospitals`;

@@ -1,8 +1,9 @@
+/* eslint-disable import/order */
 import React from "react";
 import theme from "../../styles/theme";
 import BaseModal from "../commons/BaseModal";
 import Sample from "../commons/Sample";
-import Section from "../commons/Section";
+import Section from "../utils/Section";
 import Flex from "../utils/Flex";
 import Span from "../utils/Span";
 
