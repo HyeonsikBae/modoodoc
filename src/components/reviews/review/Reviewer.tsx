@@ -42,15 +42,15 @@ const Reviewer = (props: ReviewerProps): JSX.Element => {
           <ProfileImage src={customer.profile_image} alt={customer.nickname} />
         </ImageWrapper>
         <Flex direction="column">
-          <Span>{customer.nickname}</Span>
+          <Span fontSize="0.8rem">{customer.nickname}</Span>
           <Flex direction="row" alignItems="center">
             <IconImage src="images/pen.png" alt="pen" />
-            <Span>&nbsp;{customer.review_cnt}</Span>
+            <Span fontSize="0.8rem">&nbsp;{customer.review_cnt}</Span>
             &nbsp;
             <IconImage src="images/heart.png" alt="pen" />
-            <Span>&nbsp;{customer.liked_cnt}</Span>
+            <Span fontSize="0.8rem">&nbsp;{customer.liked_cnt}</Span>
             <VerticalBar />
-            <Span>{`${registered_at.slice(0, 4)}.
+            <Span fontSize="0.8rem">{`${registered_at.slice(0, 4)}.
             ${registered_at.slice(5, 7)}.
             ${registered_at.slice(8, 10)} 등록`}</Span>
           </Flex>
