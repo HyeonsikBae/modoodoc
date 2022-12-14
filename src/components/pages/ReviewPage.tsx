@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useAppDispatch } from "../../store/hooks";
 import { setFilter } from "../../store/slices/filterSlice";
 import { HospitalType } from "../../types/dto";
 import CleanSystem from "../cleans/CleanSystem";
@@ -32,9 +33,10 @@ interface ILocation {
 const ReviewPage = (): JSX.Element => {
   const { state } = useLocation() as ILocation;
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const clickHandler = (): void => {
+    dispatch(setFilter(""));
     navigate("/");
     dispatch(setFilter(""));
   };

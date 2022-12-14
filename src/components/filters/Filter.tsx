@@ -27,7 +27,6 @@ const Filter = (props: FilterProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const clickHandler = useCallback((filter: string): void => {
-    console.log(storedFilter.filter);
     if (storedFilter.filter !== filter) {
       dispatch(setFilter(filter));
     }
@@ -36,6 +35,7 @@ const Filter = (props: FilterProps): JSX.Element => {
   const renderFilters = useCallback((): JSX.Element[] => {
     if (storedFilter[`${hospital}`]) {
       const array = Array.from(storedFilter[`${hospital}`][0]);
+
       return array.map((treat: any) => {
         return (
           <Label key={treat} htmlFor={treat}>
@@ -61,9 +61,7 @@ const Filter = (props: FilterProps): JSX.Element => {
   }, [storedFilter]);
 
   return (
-    <div style={{ display: "flex", flexWrap: "nowrap", overflowX: "auto" }}>
-      {renderFilters()}
-    </div>
+    <div style={{ display: "flex", overflowX: "auto" }}>{renderFilters()}</div>
   );
 };
 
