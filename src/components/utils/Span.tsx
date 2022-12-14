@@ -1,6 +1,7 @@
+/* eslint-disable import/order */
 import React from "react";
-import styled from "styled-components";
 import theme from "../../styles/theme";
+import styled from "styled-components";
 
 interface SpanStyleProps {
   fontSize?: string;
@@ -8,6 +9,16 @@ interface SpanStyleProps {
   fontWeight?: string;
   padding?: string;
   margin?: string;
+  whiteSpace?: string;
+}
+
+interface SpanProps {
+  fontSize?: string;
+  color?: string;
+  fontWeight?: string;
+  padding?: string;
+  margin?: string;
+  children: any;
   whiteSpace?: string;
 }
 
@@ -22,16 +33,6 @@ const SpanStyle = styled.span<SpanStyleProps>`
   white-space: ${(props): string =>
     props.whiteSpace ? `${props.whiteSpace}` : ""};
 `;
-
-interface SpanProps {
-  fontSize?: string;
-  color?: string;
-  fontWeight?: string;
-  padding?: string;
-  margin?: string;
-  children: any;
-  whiteSpace?: string;
-}
 
 const Span = (props: SpanProps): JSX.Element => {
   const { whiteSpace, fontSize, color, fontWeight, children, padding, margin } =

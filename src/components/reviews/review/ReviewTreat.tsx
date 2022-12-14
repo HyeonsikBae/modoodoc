@@ -1,20 +1,20 @@
+/* eslint-disable import/order */
 import React from "react";
-import styled from "styled-components";
-import { callbackify } from "util";
-import GrayBox from "../../utils/GrayBox";
 import theme from "../../../styles/theme";
+import styled from "styled-components";
+import GrayBox from "../../utils/GrayBox";
 import Span from "../../utils/Span";
+
+interface ReviewTreatProps {
+  treat_name: string;
+  treat_price: string;
+}
 
 const Box = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
 `;
-
-interface ReviewTreatProps {
-  treat_name: string;
-  treat_price: string;
-}
 
 const ReviewTreat = (props: ReviewTreatProps): JSX.Element => {
   const { treat_name, treat_price } = props;

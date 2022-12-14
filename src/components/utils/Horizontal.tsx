@@ -1,5 +1,10 @@
+/* eslint-disable import/order */
 import React from "react";
 import styled from "styled-components";
+
+interface HorizontalProps {
+  children: JSX.Element[] | string[];
+}
 
 const HorizontalStyle = styled.div`
   width: 100%;
@@ -7,10 +12,6 @@ const HorizontalStyle = styled.div`
   display: flex;
   flex-direction: row;
 `;
-
-interface HorizontalProps {
-  children: JSX.Element[] | string[];
-}
 
 const Horizontal = (props: HorizontalProps): JSX.Element => {
   const { children } = props;

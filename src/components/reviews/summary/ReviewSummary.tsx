@@ -1,9 +1,10 @@
-import { Rating } from "@mui/material";
+/* eslint-disable import/order */
 import React from "react";
 import theme from "../../../styles/theme";
 import { HospitalType } from "../../../types/dto";
-import Section from "../../commons/Section";
-import VerticalBar from "../../commons/VerticalBar";
+import { Rating } from "@mui/material";
+import Section from "../../utils/Section";
+import VerticalBar from "../../utils/VerticalBar";
 import Flex from "../../utils/Flex";
 import Span from "../../utils/Span";
 

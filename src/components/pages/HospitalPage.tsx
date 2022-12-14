@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosGetHospitalList } from "../../network/axios.custom";

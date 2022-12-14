@@ -1,13 +1,23 @@
+/* eslint-disable import/order */
 import React from "react";
 import styled from "styled-components";
 
-type GrayBoxStyleProps = {
+interface GrayBoxStyleProps {
   width: string;
   height: string;
   margin: string;
   padding: string;
   backgroundColor: string;
-};
+}
+
+interface GrayBoxProps {
+  width?: string;
+  height?: string;
+  backgroundColor?: string;
+  margin?: string;
+  padding?: string;
+  children: JSX.Element[] | string[] | number[] | JSX.Element | string | number;
+}
 
 const GrayBoxStyle = styled.div<GrayBoxStyleProps>`
   display: flex;
@@ -18,15 +28,6 @@ const GrayBoxStyle = styled.div<GrayBoxStyleProps>`
   background-color: ${(props): string =>
     props.backgroundColor ? props.backgroundColor : ""};
 `;
-
-interface GrayBoxProps {
-  width?: string;
-  height?: string;
-  backgroundColor?: string;
-  margin?: string;
-  padding?: string;
-  children: JSX.Element[] | string[] | number[] | JSX.Element | string | number;
-}
 
 const GrayBox = (props: GrayBoxProps): JSX.Element => {
   const {

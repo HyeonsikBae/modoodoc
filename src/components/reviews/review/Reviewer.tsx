@@ -1,10 +1,16 @@
+/* eslint-disable import/order */
 import React from "react";
-import styled from "styled-components";
 import theme from "../../../styles/theme";
+import styled from "styled-components";
 import { CustomerType } from "../../../types/dto";
-import VerticalBar from "../../commons/VerticalBar";
+import VerticalBar from "../../utils/VerticalBar";
 import Flex from "../../utils/Flex";
 import Span from "../../utils/Span";
+
+interface ReviewerProps {
+  customer: CustomerType;
+  registered_at: string;
+}
 
 const ImageWrapper = styled.div`
   width: 2rem;
@@ -26,11 +32,6 @@ const IconImage = styled.img`
   width: 0.8rem;
   height: 0.8rem;
 `;
-
-interface ReviewerProps {
-  customer: CustomerType;
-  registered_at: string;
-}
 
 const Reviewer = (props: ReviewerProps): JSX.Element => {
   const { customer, registered_at } = props;

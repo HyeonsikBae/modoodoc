@@ -1,3 +1,5 @@
+/* eslint-disable import/order */
+
 const colors = {
   black: "#000000",
   white: "#ffffff",

@@ -1,8 +1,15 @@
+/* eslint-disable import/order */
 import React from "react";
-import styled from "styled-components";
 import theme from "../../styles/theme";
+import styled from "styled-components";
 
 interface SectionStyleProps {
+  padding?: string;
+  backgroundColor?: string;
+}
+
+interface SectionProps {
+  children: any;
   padding?: string;
   backgroundColor?: string;
 }
@@ -14,12 +21,6 @@ const SectionStyle = styled.section<SectionStyleProps>`
       ? `${props.backgroundColor}`
       : `${theme.colors.white}`};
 `;
-
-interface SectionProps {
-  children: any;
-  padding?: string;
-  backgroundColor?: string;
-}
 
 const Section = (props: SectionProps): JSX.Element => {
   const { children, padding, backgroundColor } = props;

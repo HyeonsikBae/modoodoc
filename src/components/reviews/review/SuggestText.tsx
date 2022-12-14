@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import React from "react";
 import theme from "../../../styles/theme";
 import Span from "../../utils/Span";

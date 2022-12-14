@@ -1,6 +1,7 @@
+/* eslint-disable import/order */
 import React from "react";
-import styled from "styled-components";
 import theme from "../../../styles/theme";
+import styled from "styled-components";
 
 const ReceiptStyle = styled.div`
   display: flex;

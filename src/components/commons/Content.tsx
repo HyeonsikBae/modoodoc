@@ -1,14 +1,15 @@
+/* eslint-disable import/order */
 import React from "react";
-import styled from "styled-components";
 import theme from "../../styles/theme";
-
-const ContentStyle = styled.div`
-  background-color: ${theme.colors.lightGray};
-`;
+import styled from "styled-components";
 
 interface ContentProps {
   children: JSX.Element[] | JSX.Element;
 }
+
+const ContentStyle = styled.div`
+  background-color: ${theme.colors.lightGray};
+`;
 
 const Content = (props: ContentProps): JSX.Element => {
   const { children } = props;

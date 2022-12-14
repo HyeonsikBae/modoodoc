@@ -1,5 +1,5 @@
-import React, { Children } from "react";
-
+/* eslint-disable import/order */
+import React from "react";
 import styled from "styled-components";
 
 interface FlexStyleProps {
@@ -7,6 +7,16 @@ interface FlexStyleProps {
   justifyContent?: string;
   alignItems?: string;
   border?: string;
+  width?: string;
+  height?: string;
+}
+
+interface FlexProps {
+  direction?: string;
+  justifyContent?: string;
+  alignItems?: string;
+  border?: string;
+  children?: any | any[];
   width?: string;
   height?: string;
 }
@@ -24,16 +34,6 @@ const FlexStyle = styled.div<FlexStyleProps>`
   width: ${(props): string => (props.width ? `${props.width}` : "")};
   height: ${(props): string => (props.height ? `${props.height}` : "")};
 `;
-
-interface FlexProps {
-  direction?: string;
-  justifyContent?: string;
-  alignItems?: string;
-  border?: string;
-  children?: any | any[];
-  width?: string;
-  height?: string;
-}
 
 const Flex = (props: FlexProps): JSX.Element => {
   const {

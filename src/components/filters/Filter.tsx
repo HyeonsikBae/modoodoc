@@ -1,9 +1,14 @@
+/* eslint-disable import/order */
 import React, { useCallback } from "react";
-import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setFilter } from "../../store/slices/filterSlice";
 import theme from "../../styles/theme";
+import styled from "styled-components";
 import Span from "../utils/Span";
+
+interface FilterProps {
+  hospital: number;
+}
 
 const FilterButton = styled.input`
   display: none;
@@ -16,10 +21,6 @@ const Label = styled.label`
   border: 1px solid ${theme.colors.lightPurple};
   border-radius: 5rem;
 `;
-
-interface FilterProps {
-  hospital: number;
-}
 
 const Filter = (props: FilterProps): JSX.Element => {
   const { hospital } = props;
