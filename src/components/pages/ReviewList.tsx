@@ -9,6 +9,7 @@ import Content from "../commons/Content";
 import Header from "../commons/Header";
 import Review from "../reviews/review/Review";
 import ReviewSummary from "../reviews/summary/ReviewSummary";
+import Flex from "../utils/Flex";
 
 const BackButton = styled.button`
   position: absolute;
@@ -86,14 +87,15 @@ const ReviewList = (): JSX.Element => {
           <img src="/images/left-arrow.png" alt="back" />
         </BackButton>
       </Header>
-
       <Content>
         <section>filter</section>
+        <ReviewSummary hospital={state.hospital} />
+        <CleanSystem />
         <section>
-          <ReviewSummary hospital={state.hospital} />
-        </section>
-        <section>
-          <CleanSystem />
+          <Flex justifyContent="space-between">
+            <div>1</div>
+            <div>2</div>
+          </Flex>
         </section>
         <section>{renderReviews()}</section>
       </Content>

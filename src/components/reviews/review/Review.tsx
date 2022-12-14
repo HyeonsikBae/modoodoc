@@ -1,18 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import theme from "../../../styles/theme";
 import { HospitalType, ReviewType } from "../../../types/dto";
 import HorizontalBar from "../../commons/HorizontalBar";
+import Section from "../../commons/Section";
 import ReviewButton from "./ReviewButton";
 import Reviewer from "./Reviewer";
 import ReviewText from "./ReviewText";
 import ReviewTreat from "./ReviewTreat";
-
-const ReviewWrapper = styled.div`
-  background-color: ${theme.colors.white};
-  padding: 1rem;
-`;
 
 interface ReviewProps {
   review: ReviewType;
@@ -23,7 +16,7 @@ const Review = (props: ReviewProps): JSX.Element => {
   const { review, hospital } = props;
 
   return (
-    <ReviewWrapper>
+    <Section padding="1rem">
       <ReviewButton review={review} hospital={hospital} />
       <ReviewText text={review.contents} />
       <ReviewTreat
@@ -35,7 +28,7 @@ const Review = (props: ReviewProps): JSX.Element => {
         customer={review.customer}
         registered_at={review.registered_at}
       />
-    </ReviewWrapper>
+    </Section>
   );
 };
 

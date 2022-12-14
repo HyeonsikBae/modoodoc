@@ -1,19 +1,14 @@
 import React from "react";
-import styled from "styled-components";
 import theme from "../../styles/theme";
 import BaseModal from "../commons/BaseModal";
 import Sample from "../commons/Sample";
+import Section from "../commons/Section";
 import Flex from "../utils/Flex";
 import Span from "../utils/Span";
 
-const CleanSystemWrapper = styled.div`
-  background-color: ${theme.colors.white};
-  padding: 1rem;
-`;
-
 const CleanSystem = (): JSX.Element => {
   return (
-    <CleanSystemWrapper>
+    <Section padding="1rem">
       <Flex direction="row" justifyContent="space-between">
         <Flex direction="column">
           <Span>
@@ -36,7 +31,7 @@ const CleanSystem = (): JSX.Element => {
           <Sample />
         </BaseModal>
       </Flex>
-    </CleanSystemWrapper>
+    </Section>
   );
 };
 
