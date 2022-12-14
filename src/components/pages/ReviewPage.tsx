@@ -1,10 +1,14 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useAppDispatch } from "../../store/hooks";
+import { setFilter } from "../../store/slices/filterSlice";
 import { HospitalType } from "../../types/dto";
 import CleanSystem from "../cleans/CleanSystem";
 import Content from "../commons/Content";
 import Header from "../commons/Header";
+import Filter from "../filters/Filter";
+import TestFilter from "../filters/TestFilter";
 import ReviewList from "../reviews/review/ReviewList";
 import ReviewSummary from "../reviews/summary/ReviewSummary";
 import Flex from "../utils/Flex";
@@ -29,8 +33,10 @@ interface ILocation {
 const ReviewPage = (): JSX.Element => {
   const { state } = useLocation() as ILocation;
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const clickHandler = (): void => {
+    dispatch(setFilter(""));
     navigate("/");
   };
 
@@ -42,7 +48,9 @@ const ReviewPage = (): JSX.Element => {
         </BackButton>
       </Header>
       <Content>
-        <section>filter</section>
+        <div style={{ display: "flex", height: "2rem" }}>
+          <Filter hospital={state.hospital.id} />
+        </div>
         <ReviewSummary hospital={state.hospital} />
         <CleanSystem />
         <section>

@@ -1,23 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface filterStore {
-  filter: string;
-}
-
-const initialState = {
-  filter: "",
-} as filterStore;
-
 export const filterSlice = createSlice({
   name: "filter",
-  initialState,
+  initialState: { filter: "", test: 0 } as any,
   reducers: {
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    filterAll: (state, action: PayloadAction<filterStore>) => {
-      return action.payload;
-    },
-    initFilter: (state) => {
-      return initialState;
+    addList: (state, action: PayloadAction<any>) => {
+      const str = action.payload.hospital;
+      const newSet = new Set();
+      newSet.add(action.payload.treat);
+      if (Object.keys(state).includes(`${str}`)) {
+        const setFromArray = new Set(action.payload.treat);
+        newSet.add(setFromArray);
+      }
+      const newArray = Array.from(newSet);
+      return {
+        ...state,
+        [`${str}`]: newArray,
+      };
     },
     setFilter: (state, action: PayloadAction<string>) => {
       state.filter = action.payload;
@@ -25,6 +24,5 @@ export const filterSlice = createSlice({
   },
 });
 
-export const { filterAll, initFilter, setFilter } = filterSlice.actions;
-
+export const { addList, setFilter } = filterSlice.actions;
 export default filterSlice.reducer;
