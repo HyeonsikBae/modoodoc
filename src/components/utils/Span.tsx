@@ -8,6 +8,7 @@ interface SpanStyleProps {
   fontWeight?: string;
   padding?: string;
   margin?: string;
+  whiteSpace?: string;
 }
 
 const SpanStyle = styled.span<SpanStyleProps>`
@@ -18,6 +19,8 @@ const SpanStyle = styled.span<SpanStyleProps>`
   font-weight: ${(props): string => (props.color ? `${props.fontWeight}` : "")};
   padding: ${(props): string => (props.padding ? `${props.padding}` : "")};
   margin: ${(props): string => (props.margin ? `${props.margin}` : "")};
+  white-space: ${(props): string =>
+    props.whiteSpace ? `${props.whiteSpace}` : ""};
 `;
 
 interface SpanProps {
@@ -27,10 +30,12 @@ interface SpanProps {
   padding?: string;
   margin?: string;
   children: any;
+  whiteSpace?: string;
 }
 
 const Span = (props: SpanProps): JSX.Element => {
-  const { fontSize, color, fontWeight, children, padding, margin } = props;
+  const { whiteSpace, fontSize, color, fontWeight, children, padding, margin } =
+    props;
   return (
     <SpanStyle
       fontSize={fontSize}
@@ -38,6 +43,7 @@ const Span = (props: SpanProps): JSX.Element => {
       fontWeight={fontWeight}
       padding={padding}
       margin={margin}
+      whiteSpace={whiteSpace}
     >
       {children}
     </SpanStyle>
